@@ -14,9 +14,9 @@ class CsvBookCatalogueTest {
         BookCatalogue catalogue = new BookCatalogue(source);
 
         List<Book> expected = List.of(
-                new Book("Java Basics", 350),
-                new Book("Database Systems", 420),
-                new Book("Short Stories", 120)
+                new Book("Java Basics", 350, "John Smith"),
+                new Book("Database Systems", 420, "Jane Brown"),
+                new Book("Short Stories", 120, "John Smith")
         );
 
         assertEquals(expected, catalogue.getBooks());

@@ -39,8 +39,9 @@ public class CsvBookSource implements BookSource {
 
                 String title = parts[0].trim();
                 int pages = Integer.parseInt(parts[1].trim());
+                String author = parts[2].trim();
 
-                books.add(new Book(title, pages));
+                books.add(new Book(title, pages, author));
             }
 
         } catch (IOException e) {

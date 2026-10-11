@@ -14,6 +14,14 @@ public class BookCatalogue {
         return books;
     }
 
+    public List<String> titlesBy(String author) {
+        return books.stream()
+                .filter(book -> book.author().equals(author))
+                .map(Book::title)
+                .sorted()
+                .toList();
+    }
+
     public int countLongBooks() {
         int count = 0;
 
