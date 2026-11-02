@@ -1,11 +1,5 @@
-# Online Store — CIT4242 Assignment 1
-
-Simple product REST API. Java 17 or newer (including Java 21), Spring Boot 3.5.7,
-Maven and PostgreSQL. No frontend is required by the assignment.
 
 ## Run
-
-Install Docker Desktop, start it, then open a terminal in this folder:
 
 ```sh
 docker compose up --build
@@ -35,16 +29,6 @@ test database if you already have data you need to keep.
 
 Use these commands in Bash or macOS Terminal. On Windows use Git Bash.
 The examples assume a new database, where the first product has ID 1.
-
-| Method | Path | Result |
-|---|---|---|
-| GET | `/api/products` | 200, all products |
-| GET | `/api/products/{id}` | 200, one product; 404 if missing |
-| POST | `/api/products` | 201, created product and Location header |
-| PUT | `/api/products/{id}` | 200, replaced product; 404 if missing |
-| DELETE | `/api/products/{id}` | 204, empty body; 404 if missing |
-| GET | `/api/products/category/{category}` | 200, matching array |
-| GET | `/api/products/search?name=...` | 200, matching array |
 
 Create:
 
