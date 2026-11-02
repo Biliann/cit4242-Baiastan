@@ -27,9 +27,7 @@ test database if you already have data you need to keep.
 
 ## Endpoints and examples
 
-Use these commands in Bash or macOS Terminal. On Windows use Git Bash.
-The examples assume a new database, where the first product has ID 1.
-
+Use these commands in Bash or macOS Terminal. 
 Create:
 
 ```sh
@@ -85,27 +83,3 @@ curl -i -X POST http://localhost:8080/api/products -H 'Content-Type: application
 The first returns 404 with `{"status":404,"message":"Product 999999 not found","timestamp":"2026-11-02T10:00:00","errors":{}}`.
 The second returns 400 with the same four fields, message `Validation failed`,
 and `errors` naming `name`, `price` and `category`. PUT validates the same rules.
-
-Verified: 7 integration tests passed against PostgreSQL 16, plus live HTTP checks
-for all seven endpoints. Docker configuration is included; Docker itself was not
-available in the verification environment.
-
-## Structure and assumptions
-
-`controller` handles HTTP; `service` performs operations and DTO mapping;
-`repository` accesses PostgreSQL; `entity` maps the eight database columns;
-`dto` contains the three request/response records; `exception` handles errors.
-All are under `com.khalel.onlinestore`.
-
-- Create accepts name, optional description, price and category. New products are in stock.
-- Update also accepts inStock. PUT replaces the values; omitted description becomes null and omitted/null inStock becomes true.
-- Category is an exact match ignoring case; name search is a substring ignoring case. Empty search returns all products. Results are ordered by ID.
-- Price supports up to 15 integer and 4 decimal digits; extra digits are rejected to prevent silent database rounding. No currency conversion is performed.
-- IDs/timestamps are server-managed; unknown JSON fields are rejected. Timestamps use server local time.
-- No authentication, pagination or additional features were requested.
-
-AI assistance was used to prepare this solution. Review and understand the code
-before submitting, and follow the course acknowledgement requirements.
-
-Submit by creating a GitHub repository, pushing this folder's contents, and
-pasting the repository URL into Moodle.
